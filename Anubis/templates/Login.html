@@ -1,0 +1,21 @@
+<head>
+<title>Anubis NVR</title>
+<!---loads favico using flask static-->
+<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='anubis.ico')}}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<!---loads css file using flask static-->
+<link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+{% for message in get_flashed_messages() %}
+          <p>{{message}}</p>
+{% endfor %}  
+<div class="logo"></div>
+<div class="login-block">
+    <h1>LOGIN</h1>
+    <form method="POST">
+    <input type="text" value="" placeholder="Username" id="username" name="username" />
+    <input type="password" value="" placeholder="Password" id="password" name="password" />
+        <button>Submit</button>
+    </form>
+</div>
+</head>

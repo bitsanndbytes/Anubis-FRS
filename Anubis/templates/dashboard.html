@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='anubis.ico')}}">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'dashboard.css') }}">
+</head>
+<body>
+    <input type="checkbox" id="checkbox">
+    <!--The Header for Anubis-->
+    <header class="header">
+        <label class="label" for="checkbox">
+            <i id="hamburger" class="fa fa-bars" >
+
+            </i>  
+        </label>
+        <h2 class="u-name">Anubis <b>NVR</b>
+            <p id="demo"></p>    
+        </h2>
+        <a href="{{ url_for('logout')}}">
+        <i class="fa fa-sign-out"></i>
+        </a>
+    </header>
+    <!--Adding Left nav with classes for css stlying-->
+    <div class="body">
+        <nav class="side-bar">
+        <!--userprofile css styling-->
+            <div class="userprofile">
+                <img src="{{url_for('static', filename='adminpic.jpg')}}">
+                <h4>{{session['username']}}</h4>
+            </div>
+            <!--Dashboard Items-->
+            <ul>
+                <li>
+                <a href="{{ url_for('dashboard')}}">
+                    <i class="fa fa-desktop">
+                        <span>Dashboard</span>
+                    </i>
+                </a>
+                </li>
+                <li>
+                    <a href="#" id="button" class="button">
+                    <i class="fa fa-camera">
+                        <span>Add-Cameras</span>
+                        </i>
+                    </a>
+                    </button>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('upload')}}">
+                            <i class="fa fa-eye">
+                                <span>Train Faces</span>
+                            </i>
+                        </a>
+                        </li>
+                 <li>
+                        <a href="{{ url_for('notify')}}">
+                            <i class="fa fa-bell">
+                                <span>Notifications</span>
+                            </i>
+                        </a>
+                </li>
+                <li> 
+                        <a href="{{ url_for('logout')}}">
+                            <i class="fa fa-power-off">
+                                <span class="logout">Logout</span>
+                            </i>
+                        </a>
+                        </li>
+            </ul>
+            </ul>
+        </nav>
+        <section class="cameradashboard">
+            <!--div container for camera feeds-->
+            <div id="div-container">
+                <div class="div-shadow">
+                    <nav class="navbar">
+                    <button class="addbutton" onclick="openForm()">Add Camera</button>
+                    </nav>
+                </div>
+                <div class="div-shadow">
+                    <nav class="navbar">
+                    <button class="addbutton" onclick="cam2form()">Add Camera</button>
+                    </nav>
+                </div>
+                <div class="div-shadow">
+                    <nav class="navbar">
+                        <button class="addbutton" onclick="cam3form()">Add Camera</button>
+                    </nav>
+                </div>
+            </div> 
+            <!--Form Popup for Camera1--> 
+            <div class="form-popup" id="camera1">
+                <form method="" class="form-container">
+                <input type="text" value="" placeholder="Desired Camera Name" id="username" name="camera1name" />
+                <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="camera1" />
+                  <button type="submit" class="btn">Add Camera</button>
+                  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+              </div>
+              <!--Form Popup for Camera2-->
+              <div class="form-popup" id="camera2">
+                <form method="" class="form-container">
+                <input type="text" value="" placeholder="Desired Camera Name" id="username" name="camera2name" />
+                <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="camera2" />
+                  <button type="submit" class="btn">Add Camera</button>
+                  <button type="button" class="btn cancel" onclick="closecam2Form()">Close</button>
+                </form>
+              </div>
+              <!--Form Popup for Camera3-->  
+              <div class="form-popup" id="camera3">
+                <form method="" class="form-container">
+                <input type="text" value="" placeholder="Desired Camera Name" id="username" name="camera3name" />
+                <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="camera3" />
+                  <button type="submit" class="btn">Add Camera</button>
+                  <button type="button" class="btn cancel" onclick="closecam3Form()">Close</button>
+                </form>
+              </div>
+            </div>
+            <!--Pop form-->
+            <div class="bg-modal">
+            <div class="modal-content">
+                <div class="close">+</div>
+                <div class="login-block">
+                    <h1>Add Camera</h1>
+                    <form method="">
+                    <input type="text" value="" placeholder="Desired Camera Name" id="username" name="username" />
+                    <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="username" />
+                        <button class="btn-add">Submit</button>
+                    </form>  
+        <!--Javascript for pop form-->
+              <script src="{{ url_for('static', filename= 'notify.js') }}">
+              </script>
+            </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+ }
+ /* Styling for the header*/
+ .header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 7px 30px;
+     background: rgb(23, 203, 89);
+     color :black;
+     border-bottom: 3px solid goldenrod;
+     
+ }
+ /*styling for Anubis lettering*/
+ .u-name{
+     font-size:  20px;
+     padding-left: 17px;
+ }
+ /* styling for all the i tags in the header*/
+ .header i {
+     font-size: 30px;
+     cursor: pointer;
+     color: black;
+     
+ }
+ /*hovering effect for the i tag to gold */
+ .header i:hover {
+     color: goldenrod;
+ }
+ /*styling for the user profile icon on the left */
+ .userprofile {
+     text-align: center;
+     padding-left: 10px;
+     padding-top: 25px;
+     margin-left: -50px;
+ }
+ 
+ .userprofile img{
+     width: 100px;
+     border-radius: 50%;
+ }
+ 
+ .userprofile h4{
+     color: goldenrod;
+     padding: 5px 0;
+ }
+ 
+ /*styling for the side bar */
+ .side-bar{
+     width: 250px;
+     background: #262931;
+     min-height: 100vh; 
+     border-right: 3px solid goldenrod;
+     transition: 500ms width;
+     
+ }
+ /* body styling */
+ .body{
+     display: flex;
+ }
+ /* camera dashboard styling */
+ .form-dashboard{
+     width: 100%;
+     background: url("notifyback.jpg");
+     background-size: cover;
+     background-position: center;
+     display: flex;
+     flex-direction: column;
+     overflow: hidden;
+ }
+ 
+ .side-bar ul {
+     margin-top: 20px;
+     list-style: none;
+ }
+ 
+ .side-bar ul li {
+     font-size: 16px;
+     padding: 15px 0px;
+     padding-left: 20px;
+     transition: 500ms background;
+ 
+ }
+ 
+ .side-bar ul li a{
+     text-decoration: none;
+     color: goldenrod;
+     cursor: pointer;
+     letter-spacing: 1px;
+ }
+ 
+ .side-bar ul li:hover{
+     background: black;
+ }
+ 
+ #hamburger{
+     display: inline-block;
+     margin-left: 70px;
+     font-size: 20px;
+     transition: 500ms color;
+ }
+ 
+ #checkbox{
+     display: none;
+     
+ }
+ 
+ #checkbox:checked ~ .body .side-bar{
+     width: 60px;
+     
+ }
+ 
+ #checkbox:checked ~ .body .side-bar .userprofile{
+     visibility: hidden;
+ }
+ 
+ #checkbox:checked ~ .body .side-bar a span{
+     display: none;
+ }
+ 
+ .label{
+     margin-left: -70px;
+ }
+ 
+ .login-block {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #ff656c;
+    margin-left: 20px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 10px #888888;
+    margin-bottom: 20px;
+
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block input#username {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+    border: 1px solid #ff656c;
+    margin-bottom: 15px;
+}
+
+.login-block input#username:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+    border: 1px solid #ff656c;
+}
+
+.login-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active,
+.login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #e15960
+}
+
+/* styling for error message if username and password is wrong */
+p {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #659dff;
+    margin-left: 20px;
+    opacity: 0;
+    -webkit-animation: fadeout 7s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadeout 7s; /* Firefox < 16 */
+        -ms-animation: fadeout 7s; /* Internet Explorer */
+         -o-animation: fadeout 7s; /* Opera < 12.1 */
+            animation: fadeout 7s;
+}
+/*styling for fading out*/
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Styling for Radio button */
+.custom_radio{
+    font-size: medium;
+ }
+ .custom_radio input[type="radio"]{
+   display: none;
+ }
+ .custom_radio input[type="radio"] + label{
+   position: relative;
+   display: inline-block;
+   padding-left: 1.5em;
+   margin-right: 2em;
+   cursor: pointer;
+   line-height: 1em;
+   -webkit-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+   margin-bottom: 9px;
+   height: 29px;
+   
+ }
+ .custom_radio input[type="radio"] + label:after{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 1em;
+   height: 1em;
+   text-align: center;
+   color: #e15960;
+   font-family: Times;
+   border-radius: 50%;
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+ }
+ .custom_radio input[type="radio"] + label:before {
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+   box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em white;
+ }
+ .custom_radio input[type="radio"] + label:hover:before {
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+   box-shadow: inset 0 0 0 0.3em white, inset 0 0 0 1em #c6c6c6;
+ }
+ .custom_radio input[type="radio"]:checked + label:before {
+   -webkit-transition: all .3s ease;
+   transition: all .3s ease;
+   box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 3em #e15960;
+ }
+ .custom_radio input[type="radio"] + label:before{
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 11px;
+    border: 2px solid #e15960;
+    background-color: #e15960; 
+ }

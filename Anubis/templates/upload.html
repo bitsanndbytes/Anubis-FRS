@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='anubis.ico')}}">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'upload.css') }}">
+</head>
+<body>
+    <input type="checkbox" id="checkbox">
+    <!--The Header for Anubis-->
+    <header class="header">
+        <label class="label" for="checkbox">
+            <i id="hamburger" class="fa fa-bars" >
+
+            </i>  
+        </label>
+        <h2 class="u-name">Train <b>Faces</b>
+            
+        </h2>
+        <a href="{{ url_for('dashboard')}}">
+        <i class="fa fa-chevron-circle-left"></i>
+        </a>
+    </header>
+    <!--Adding Left nav with classes for css stlying-->
+    <div class="body">
+        <nav class="side-bar">
+        <!--userprofile css styling-->
+            <div class="userprofile">
+                <img src="{{url_for('static', filename='adminpic.jpg')}}">
+                <h4>{{session['username']}}</h4>
+            </div>
+            <!--Dashboard Items-->
+            <ul>
+                <li>
+                <a href="{{ url_for('dashboard')}}">
+                    <i class="fa fa-home">
+                        <span>Home</span>
+                    </i>
+                </a>
+                </li>
+                <li> 
+                        <a href="{{ url_for('logout')}}">
+                            <i class="fa fa-power-off">
+                                <span>Logout</span>
+                            </i>
+                        </a>
+                        </li>
+            </ul>
+            </ul>
+        </nav>
+        <section class="form-dashboard">
+            <h1><div class="login-block">
+                <h1>UPLOAD FACES</h1>
+                <form method="POST" enctype="multipart/form-data">
+                <input type="text" value="" placeholder="Person's Name" id="username" name="Recusername" />
+                <!--Container for the upload button for styling-->
+                <div class="container">
+                    <div class="fileUploadInput">
+                <!--Input File that only accepts All Image Format-->
+                    <input type="file" name="Recimage" accept="image/*" />
+                    <button>+</button>
+                </div>
+                    <button>Upload</button>
+                </form>
+            </div>
+        </h1>
+            
+        </section>
+    </div>
+</body>
+</html>

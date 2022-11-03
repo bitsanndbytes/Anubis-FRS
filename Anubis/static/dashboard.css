@@ -1,0 +1,391 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box; 
+   font-family: Arial, sans-serif;
+   overflow: hidden;
+}
+/* Styling for the header*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 30px;
+    background: rgb(23, 203, 89);
+    color :black;
+    border-bottom: 3px solid goldenrod;   
+}
+/*styling for Anubis lettering*/
+.u-name{
+    font-size:  20px;
+    padding-left: 17px;
+}
+/* styling for all the i tags in the header*/
+.header i {
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+    
+}
+/*hovering effect for the i tag to gold */
+.header i:hover {
+    color: goldenrod;
+}
+/*styling for the user profile icon on the left */
+.userprofile {
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 25px;
+    margin-left: -50px;
+}
+
+.userprofile img{
+    width: 100px;
+    border-radius: 50%;
+}
+
+.userprofile h4{
+    color: goldenrod;
+    padding: 5px 0;
+}
+
+/*styling for the side bar */
+.side-bar{
+    width: 250px;
+    background: #262931;
+    min-height: 100vh; 
+    border-right: 3px solid goldenrod;
+    transition: 500ms width;
+    
+}
+/* body styling */
+.body{
+    display: flex;
+}
+/* camera dashboard styling */
+.cameradashboard{
+    width: 100%;
+    background: url("Bg.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: auto;
+}
+
+.cameradashboard h1{
+    color:white;
+    font-size: 20px;
+    background: #ff656c;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.cameradashboard p {
+    color: white;
+    font-size: 20px;
+    background: blue;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.side-bar ul {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.side-bar ul li {
+    font-size: 16px;
+    padding: 15px 0px;
+    padding-left: 20px;
+    transition: 500ms background;
+
+}
+
+.side-bar ul li a{
+    text-decoration: none;
+    color: goldenrod;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.side-bar ul li:hover{
+    background: black;
+}
+
+#hamburger{
+    display: inline-block;
+    margin-left: 70px;
+    font-size: 20px;
+    transition: 500ms color;
+}
+
+#checkbox{
+    display: none;
+    
+}
+
+#checkbox:checked ~ .body .side-bar{
+    width: 60px;
+    
+}
+
+#checkbox:checked ~ .body .side-bar .userprofile{
+    visibility: hidden;
+}
+
+#checkbox:checked ~ .body .side-bar a span{
+    display: none;
+}
+
+.label{
+    margin-left: -70px;
+}
+
+.logout{
+    height: 30px;
+}
+
+/*Styling for popup modal*/
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-content {
+    width: 350px;
+    height: 250px;
+    background-color: white;
+    border-radius: 6px;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+    border-top: 5px solid #ff656c;
+    border-bottom: 5px solid #ff656c;
+}
+
+input {
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+/*Styling for Camera Modal*/
+.login-block {
+    width: 325px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    margin-left: 15px;
+    padding-top: 3px;
+
+}
+
+.login-block h1 {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    text-transform: lowercase;
+    margin-top: 10px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block input#username {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#username:focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active,
+.login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #e15960
+}
+
+/*Div styling for Camera Div*/
+
+#div-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 2em 0em 0em ;
+    position: absolute;
+    top: 0;
+    margin-top: 7px;
+    justify-content: inherit;
+  }
+  
+  .div-shadow {
+    width: 30%;
+    height: 440px;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    bottom: 200px;
+    margin: 1em 1em 1em 1em;
+    transition: all 100ms ease-in-out;
+    background: goldenrod;
+    display: flex;
+  }
+  
+  .div-shadow:nth-child(odd) {
+    box-shadow: 0px 0px 10px ;
+  }
+  
+  .div-shadow:nth-child(even) {
+    box-shadow: inset 0px 0px 10px var(--clr-gray-med);
+  }
+  
+  .div-shadow:hover {
+    transform: scale(1.056);
+  }
+  
+
+  nav{
+    width: 100%;
+    height: 50px;
+  }
+
+
+    
+.navbar{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255,255,255,0.0);
+    
+}
+
+.addbutton{
+    float: right;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  border: 3px solid;
+  z-index: 9;
+  top: 150px;
+  border-radius: 5px;
+  
+}
+
+/* Add styles to the form container */
+.form-container {
+  width:350px;
+  padding: 20px;
+  background-color: black;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  background-color: white;
+  border-radius: 6px;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+  border-radius: 5px;
+  border: 1px solid;
+  font-size: 14px;
+  font-family: Montserrat;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
