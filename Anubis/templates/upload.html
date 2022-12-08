@@ -16,7 +16,7 @@
         <label class="label" for="checkbox">
             <i id="hamburger" class="fa fa-bars" >
 
-            </i>  
+            </i>   
         </label>
         <h2 class="u-name">Train <b>Faces</b>
             
@@ -53,6 +53,9 @@
             </ul>
         </nav>
         <section class="form-dashboard">
+            {% for message in get_flashed_messages() %}
+            <p>{{message}}</p>
+  {% endfor %}
             <h1><div class="login-block">
                 <h1>UPLOAD FACES</h1>
                 <form method="POST" enctype="multipart/form-data">

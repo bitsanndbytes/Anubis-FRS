@@ -156,7 +156,7 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 18px;
     font-family: Montserrat;
     padding: 0 20px 0 50px;
     outline: none;
@@ -210,26 +210,7 @@
     background: #e15960
 }
 
-/* styling for error message if username and password is wrong */
-p {
-    width: 320px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    border-top: 5px solid #659dff;
-    margin-left: 20px;
-    opacity: 0;
-    -webkit-animation: fadeout 7s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadeout 7s; /* Firefox < 16 */
-        -ms-animation: fadeout 7s; /* Internet Explorer */
-         -o-animation: fadeout 7s; /* Opera < 12.1 */
-            animation: fadeout 7s;
-}
-/*styling for fading out*/
-@keyframes fadeout {
-    from { opacity: 1; }
-    to   { opacity: 0; }
-}
+
 
 /*Styling for File Upload Section*/
 .fileUploadInput {
@@ -314,3 +295,26 @@ p {
 }
 }
   
+
+/* styling for error message if No Image is uploaded or image is uploaded successfully */
+p {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #659dff;
+    opacity: 0;
+    -webkit-animation: fadeout 10s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadeout 10s; /* Firefox < 16 */
+        -ms-animation: fadeout 10s; /* Internet Explorer */
+         -o-animation: fadeout 10s; /* Opera < 12.1 */
+            animation: fadeout 10s;   
+}
+/*styling for fading out*/
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}

@@ -18,7 +18,7 @@
 
             </i>  
         </label>
-        <h2 class="u-name">Anubis <b>NVR</b>
+        <h2 class="u-name">Anubis-<b>FRS</b>
             <p id="demo"></p>    
         </h2>
         <a href="{{ url_for('logout')}}">
@@ -77,25 +77,20 @@
         <section class="cameradashboard">
             <!--div container for camera feeds-->
             <div id="div-container">
+                
                 <div class="div-shadow">
-                    <nav class="navbar">
-                    <button class="addbutton" onclick="openForm()">Add Camera</button>
-                    </nav>
+                    <img src="{{ url_for('stream')}}" width="100%"/>
+                    <button class="btn" onclick="openForm()">Add Camera</button>
+                    <div class="cameraview">
+                    </div>
                 </div>
                 <div class="div-shadow">
-                    <nav class="navbar">
-                    <button class="addbutton" onclick="cam2form()">Add Camera</button>
-                    </nav>
-                </div>
-                <div class="div-shadow">
-                    <nav class="navbar">
-                        <button class="addbutton" onclick="cam3form()">Add Camera</button>
-                    </nav>
-                </div>
+                    <img src ="{{ url_for('stream1')}}" width="100%"/>
+                    <button class="btn" onclick="cam2form()">Add Camera</button>
             </div> 
             <!--Form Popup for Camera1--> 
             <div class="form-popup" id="camera1">
-                <form method="" class="form-container">
+                <form method="POST" class="form-container">
                 <input type="text" value="" placeholder="Desired Camera Name" id="username" name="camera1name" />
                 <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="camera1" />
                   <button type="submit" class="btn">Add Camera</button>
@@ -104,7 +99,7 @@
               </div>
               <!--Form Popup for Camera2-->
               <div class="form-popup" id="camera2">
-                <form method="" class="form-container">
+                <form method="POST" class="form-container">
                 <input type="text" value="" placeholder="Desired Camera Name" id="username" name="camera2name" />
                 <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="camera2" />
                   <button type="submit" class="btn">Add Camera</button>
@@ -112,14 +107,6 @@
                 </form>
               </div>
               <!--Form Popup for Camera3-->  
-              <div class="form-popup" id="camera3">
-                <form method="" class="form-container">
-                <input type="text" value="" placeholder="Desired Camera Name" id="username" name="camera3name" />
-                <input type="text" value="" placeholder="rtsp://admin:123456@IP/live/ch0" id="username" name="camera3" />
-                  <button type="submit" class="btn">Add Camera</button>
-                  <button type="button" class="btn cancel" onclick="closecam3Form()">Close</button>
-                </form>
-              </div>
             </div>
             <!--Pop form-->
             <div class="bg-modal">

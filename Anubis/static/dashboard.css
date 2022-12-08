@@ -280,7 +280,7 @@ input {
   }
   
   .div-shadow {
-    width: 30%;
+    width: 45%;
     height: 440px;
     top: 0;
     padding: 0;
@@ -290,8 +290,23 @@ input {
     transition: all 100ms ease-in-out;
     background: goldenrod;
     display: flex;
+    position: relative;
+    border-radius: 6px;
+    border: 2px solid goldenrod
   }
   
+  .div-shadow .btn{
+    float: right;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    position: absolute;
+    font-size: 10px;
+    padding: 7px;
+    border: none;
+    cursor: pointer;
+  }
   .div-shadow:nth-child(odd) {
     box-shadow: 0px 0px 10px ;
   }
@@ -314,18 +329,12 @@ input {
     
 .navbar{
     width: 100%;
-    height: 50px;
+    height: 25px;
     background-color: rgba(255,255,255,0.0);
     
 }
 
-.addbutton{
-    float: right;
-    background: #ff656c;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #e15960;
-}
+
 
 /* The popup form - hidden by default */
 .form-popup {
@@ -389,3 +398,4 @@ input {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
