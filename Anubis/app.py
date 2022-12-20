@@ -7,6 +7,9 @@ from functools import wraps
 from werkzeug.utils import secure_filename
 import threading
 import multiprocessing
+import csv
+from imutils.video import VideoStream
+import imutils
     #imports packages
 
 global camera2
@@ -14,11 +17,10 @@ global camera1
 
     #save camera variable as file
 def savevar(camname):
-    file = open("cameraurl.txt", "a")
-    str1 = repr(camname)
-    file.write(f""+ camname + "\n")
-    file.close()
-
+    file = open("cameraurl.csv", "w")
+    #str1 = repr(camname)
+    writer = csv.writer(file, delimiter=' ', quoting=csv.QUOTE_NONE)
+    writer.writerow(camname)
 
 app = Flask(__name__)
     #intiate flask app
@@ -38,27 +40,35 @@ def login_required(f):
     return login
     # to capture frames from user input might also be using for facial recognition
 def gen_frames(y):
-    cam1 = cv2.VideoCapture(y)
-    cam1.set(cv2.CAP_PROP_FPS, 60)
+    cam1 = VideoStream(y).start()
+    facecascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
     while True:
-        success, frame = cam1.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
+        frame = cam1.read()
+        frame = imutils.resize(frame, width=500)
+        #cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
+        framegray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        faces = facecascade.detectMultiScale(framegray,1.3,5)
+        for face in faces:
+            x,y,w,h = face
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),3)
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
         yield(b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
     # to capture frame 2 of user input might also be used for facial recognition
 def frames(x):
-    cam2 = cv2.VideoCapture(x)
-    cam2.set(cv2.CAP_PROP_FPS, 60)
+    cam2 = VideoStream(x).start()
+    facecascade = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
     while True:
-        success, frame = cam2.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
+        frame = cam2.read()
+        frame = imutils.resize(frame, width=500)
+        #cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
+        framegray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        faces = facecascade.detectMultiScale(framegray,1.3,5)
+        for face in faces:
+            x,y,w,h = face
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),3)
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
         yield(b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
     # route stream to dashboard using multipart -x 
@@ -181,3 +191,9 @@ if __name__ == '__main__':
     p1.start()
     p2 = multiprocessing.Process(target=frames(), args=())
     p2.start()
+    p3 = multiprocessing.Process(target=stream1(), args=())
+    p3.start()
+    p4 = multiprocessing.Process(target=stream(), args=())
+    p4.start()
+    p3 = multiprocessing.Process(target=dashboard(), args=())
+    p3.start()
