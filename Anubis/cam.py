@@ -3,10 +3,11 @@ import os, sys
 import cv2
 import numpy as np
 import math
-
+from imutils.video import VideoStream
+import imutils
 
 # Helper
-def face_confidence(face_distance, face_match_threshold=0.6):
+def face_confidence(face_distance, face_match_threshold=0.9):
     range = (1.0 - face_match_threshold)
     linear_val = (1.0 - face_distance) / (range * 2.0)
 
@@ -38,13 +39,13 @@ class FaceRecognition:
         print(self.known_face_names)
 
     def run_recognition(self):
-        video_capture = cv2.VideoCapture(0)
+        video_capture = VideoStream('rtsp://admin:123456@10.0.0.200/live/ch1').start()
 
-        if not video_capture.isOpened():
-            sys.exit('Video source not found...')
+
 
         while True:
-            ret, frame = video_capture.read()
+            frame = video_capture.read()
+            frame = imutils.resize(frame, width=500)
 
             # Only process every other frame of video to save time
             if self.process_current_frame:
@@ -55,7 +56,7 @@ class FaceRecognition:
                 rgb_small_frame = small_frame[:, :, ::-1]
 
                 # Find all the faces and face encodings in the current frame of video
-                self.face_locations = face_recognition.face_locations(rgb_small_frame)
+                self.face_locations = face_recognition.face_locations(rgb_small_frame,number_of_times_to_upsample=4)
                 self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
 
                 self.face_names = []

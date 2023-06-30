@@ -51,3 +51,5 @@ function cam3form() {
 function closecam3Form() {
   document.getElementById("camera3").style.display = "none";
 }
+
+

@@ -5,6 +5,7 @@ import face_recognition
 import numpy as np
 import multiprocessing
 
+
 def get_encoded():
     encoded = {}
 

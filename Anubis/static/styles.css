@@ -18,7 +18,7 @@ body {
 .login-block {
     width: 320px;
     padding: 20px;
-    background: #fff;
+    background: rgba(190, 189,189, 0.8);
     border-radius: 5px;
     border-top: 5px solid #ff656c;
     margin-left: 20px;
@@ -32,6 +32,12 @@ body {
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 20px;
+}
+
+.login-block h5 {
+    display: relative;
+    margin-top: 10px;
+    margin-bottom: -15px;
 }
 
 .login-block input {
@@ -48,22 +54,22 @@ body {
 }
 
 .login-block input#username {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background: #fff url('Images/icon.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#username:focus {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background: #fff url('Images/icon.png') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#password {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background: #fff url('Images/Lock.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#password:focus {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background: #fff url('Images/Lock.png') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
 
@@ -113,3 +119,23 @@ p {
     to   { opacity: 0; }
 }
 
+@media (max-width: 600px) {
+    body {
+      width: auto;
+    }
+    .login-block {
+        width: 85%;
+    }
+}
+  
+  @media screen and (max-width: 600px) {
+    .login-block {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+
+.centered {
+    text-align: center;
+    color: red;
+}

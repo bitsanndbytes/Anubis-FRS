@@ -15,6 +15,12 @@ import imutils
 global camera2
 global camera1
 
+#defining prototext and caffemodel paths
+caffeModel = "res10_300x300_ssd_iter_140000.caffemodel"
+prototextPath = "deploy_prototxt.txt"
+
+net = cv2.dnn.readNetFromCaffe(prototextPath,caffeModel)    
+
     #save camera variable as file
 def savevar(camname):
     file = open("cameraurl.csv", "w")

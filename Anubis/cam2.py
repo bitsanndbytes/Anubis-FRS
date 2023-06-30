@@ -120,4 +120,8 @@ while True:
         cam2.capture.release()
         cv2.destroyAllWindows()
         exit(1)
+        
+
+
+
 

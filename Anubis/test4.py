@@ -1,44 +1,73 @@
-# import required libraries
-from vidgear.gears import StreamGear
+import  os
+import numpy as np
 import cv2
 
-# Open suitable video stream, such as webcam on first index(i.e. 0)
-stream = cv2.VideoCapture('rtsp://admin:Water44!@10.0.0.190:554/cam/realmonitor?channel=1&subtype=0') 
 
-# describe a suitable manifest-file location/name
-streamer = StreamGear(output="dash_out.mpd")
+def main():
+    # open captcha
+    directory = os.path.dirname(__file__)
+    #capture = cv2.VideoCapture(os.path.join(directory, "image.jpg")) # image file
+    capture  =  cv2 . VideoCapture ( 0 ) # camera
+    if not capture.isOpened():
+        exit()
+    
+    # load the model
+    face_detector = cv2.FaceDetectorYN_create('face_recognizer_fast.onnx',"", (320, 320))
 
-# loop over
-while True:
+    while True:
+        # capture the frame and load the image
+        result, image = capture.read()
+        if  result  is  False :
+            cv2.waitKey(0)
+            break
 
-    # read frames from stream
-    (grabbed, frame) = stream.read()
+        # If the image is not 3 channels, convert it to 3 channels
+        channels = 1 if len(image.shape) == 2 else image.shape[2]
+        if channels == 1:
+            image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+        if channels == 4:
+            image = cv2.cvtColor(image, cv2.COLOR_BGRA2BGR)
 
-    # check for frame if not grabbed
-    if not grabbed:
-      break
+        # specify input size
+        height, width, _ = image.shape
+        face_detector.setInputSize((width, height))
 
-    # {do something with the frame here}
-    # lets convert frame to gray for this example
-    #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        # detect faces
+        _,faces = face_detector.detect(image)
+        faces = faces if faces is not None else []
 
+        # Draw bounding boxes and landmarks for detected faces
+        for face in faces:
+            # bounding box
+            box = list(map(int, face[:4]))
+            color = (0, 0, 255)
+            thickness = 2
+            cv2.rectangle(image, box, color, thickness, cv2.LINE_AA)
 
-    # send frame to streamer
-    streamer.stream(frame)
+            # Landmarks (Right Eye, Left Eye, Nose, Right Mouth Corner, Left Mouth Corner)
+            landmarks = list(map(int, face[4:len(face)-1]))
+            landmarks = np.array_split(landmarks, len(landmarks) / 2)
+            for landmark in landmarks:
+                radius = 5
+                thickness = -1
+                cv2.circle(image, landmark, radius, color, thickness, cv2.LINE_AA)
+                
+            # Degree of reliability
+            confidence = face[-1]
+            confidence = "{:.2f}".format(confidence)
+            position = (box[0], box[1] - 10)
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            scale = 0.5
+            thickness = 2
+            cv2.putText(image, confidence, position, font, scale, color, thickness, cv2.LINE_AA)
 
-    # Show output window
-    cv2.imshow("Output Gray Frame", frame)
+        # display the image
+        cv2.imshow("face detection", image)
+        key = cv2.waitKey(10)
+        if key == ord('q'):
+            break
+    
+    cv2.destroyAllWindows()
 
-    # check for 'q' key if pressed
-    key = cv2.waitKey(1) & 0xFF
-    if key == ord("q"):
-        break
-
-# close output window
-cv2.destroyAllWindows()
-
-# safely close video stream
-stream.release()
-
-# safely close streamer
-streamer.terminate()
+if __name__ == '__main__':
+    main()

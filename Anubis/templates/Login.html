@@ -1,21 +1,36 @@
 <head>
-<title>Anubis NVR</title>
-<!---loads favico using flask static-->
-<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='anubis.ico')}}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<!---loads css file using flask static-->
-<link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
-{% for message in get_flashed_messages() %}
-          <p>{{message}}</p>
-{% endfor %}  
-<div class="logo"></div>
-<div class="login-block">
-    <h1>LOGIN</h1>
-    <form method="POST">
-    <input type="text" value="" placeholder="Username" id="username" name="username" />
-    <input type="password" value="" placeholder="Password" id="password" name="password" />
-        <button>Submit</button>
-    </form>
-</div>
+    <title>Anubis NVR</title>
+    <!---loads favico using flask static-->
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='anubis.ico')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!---loads css file using flask static-->
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+    <!--Javascript for div onclick-->
+    <script src="{{ url_for('static', filename= 'login.js') }}">
+    </script>
+    {% for message in get_flashed_messages() %}
+              <p>{{message}}</p>
+    {% endfor %}
+    <div class="logo"></div>
+    <div class="login-block" id="login-block">
+        <h1>LOGIN</h1>
+        <form method="POST">
+        <input type="text" value="" placeholder="Username" id="username" name="username" />
+        <input type="password" value="" placeholder="Password" id="password" name="password" />
+            <button>Submit</button>
+            <h5>Don't have an account?. <a href="#" onclick="signup()">Sign-up Here</a></h5>
+        </form>
+    </div>
+    <div class="login-block" id="signup-block" style="display: none;">
+        <h1>Sign-up</h1>
+        <form method="POST">
+            <h6 class="centered" id="passwordcenter" style="display:none;">Passwords Don't Match.</h6>
+        <input type="text" value="" placeholder="Username" id="username" name="username"/>
+        <input type="password" value="" placeholder="Password" id="password1" name="password" onkeyup="check()" />
+        <input type="password" value="" placeholder="Confirm Password" id="password2" name="password" onkeyup="check()" />
+            <button id="button">Sign-up</button>
+            <h5>Already Have an Account?. <a href="#" onclick="login()">Login Here</a></h5>
+        </form>
+    </div>
 </head>
