@@ -39,7 +39,7 @@ class FaceRecognition:
         print(self.known_face_names)
 
     def run_recognition(self):
-        video_capture = VideoStream('rtsp://admin:123456@10.0.0.200/live/ch1').start()
+        video_capture = VideoStream('').start()
 
 
 
