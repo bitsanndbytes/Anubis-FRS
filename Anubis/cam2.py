@@ -105,7 +105,7 @@ class FaceRecognition:
 
 
 cam = FaceRecognition(0)
-cam2 = FaceRecognition('rtsp://admin:123456@10.0.0.200/live/ch1')
+cam2 = FaceRecognition('')
 
 while True:
     try:
