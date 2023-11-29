@@ -17,7 +17,7 @@ net = cv2.dnn.readNetFromCaffe(prototextPath,caffeModel)
 
 # initialize the video stream to get the video frames
 print("[INFO] starting video stream...")
-vs = VideoStream(src='rtsp://admin:123456@10.0.0.200/live/ch1').start()
+vs = VideoStream(src='').start()
 time.sleep(2.0)
 
 while True :
