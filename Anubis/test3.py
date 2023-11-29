@@ -11,8 +11,7 @@ async def my_frame_producer():
 
     # !!! define your own video source here !!!
     # Open any video stream such as live webcam 
-    # video stream on first index(i.e. 0) device
-    stream = cv2.VideoCapture('rtsp://admin:Water44!@10.0.0.190:554/cam/realmonitor?channel=1&subtype=0')
+    # video stream on first index(i.e. 0) device')
     # loop over frames
     while True:
         # read frame from provided source
