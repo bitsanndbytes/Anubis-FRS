@@ -15,7 +15,7 @@ import imutils
 # specific demo. If you have trouble installing it, try any of the other demos that don't require it instead.
 
 # Get a reference to webcam #0 (the default one)
-video_capture = VideoStream('rtsp://admin:123456@10.0.0.200/live/ch1').start()
+video_capture /live/ch1').start()
 
 
    
